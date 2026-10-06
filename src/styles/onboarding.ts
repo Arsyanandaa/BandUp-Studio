@@ -5,7 +5,7 @@ export const onboardingStyles = StyleSheet.create({
     flex: 1,
   },
   content: {
-
+    flex: 1,
   },
   title: {
     
