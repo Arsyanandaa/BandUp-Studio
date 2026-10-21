@@ -1,6 +1,5 @@
-import { onboardingstyles } from '@/styles/onboarding'
+import { onboardingstyles } from "@/styles/onboarding-band";
 import { View, Text, ImageBackground } from 'react-native'
-import { Alert } from "react-native"
 import PrimaryButton from "../components/PrimaryButton"
 import { router } from "expo-router";
 

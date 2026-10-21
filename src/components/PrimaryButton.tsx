@@ -1,5 +1,5 @@
 import { Text, Pressable } from 'react-native'
-import { onboardingstyles } from "../styles/onboarding"
+import { onboardingstyles } from "../styles/onboarding-band";
 
 type PrimaryButtonProps = {
     title: string;

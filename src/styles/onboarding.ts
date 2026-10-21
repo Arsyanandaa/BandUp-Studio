@@ -1,101 +1,51 @@
-import { Background } from "expo-router/build/react-navigation"
-import {StyleSheet} from "react-native"
+import { StyleSheet } from "react-native";
 
-
-export const onboardingstyles = StyleSheet.create({
-  Background: {
+// External styles: dipakai bersama oleh index, daily-goal, dan choose-starter
+export const onboardingStyles = StyleSheet.create({
+  background: {
     flex: 1,
   },
   content: {
     flex: 1,
-    justifyContent: "flex-start",
-    alignItems: "center",
-    paddingTop: 150,
   },
-  title: {
-    fontSize: 28,
-    fontWeight: "bold",
-    color: "#FFFFFF",
+  title: {},
+  safeArea: {
+    flex: 1,
   },
-  button: {
-    backgroundColor:  "#8E97FD",
-    paddingVertical: 16,
-    borderRadius: 32,
-    alignItems: "center",
-    marginHorizontal: 24,
+  container: {
+    flexGrow: 1,
+    paddingTop: 80,
+    paddingBottom: 40,
+    justifyContent: "space-between",
+  },
+  headerContainer: {
+    alignItems: "flex-start",
     marginBottom: 40,
   },
-  buttonText: {
-    color: "#FFFFFF",
-    fontSize: 16,
+  screenTitle: {
     fontWeight: "bold",
+    color: "#ffffff",
+    marginBottom: 16,
   },
-  header: {
-    paddingTop: 100,
-    paddingHorizontal: 24,
+  screenSubtitle: {
+    color: "#e0e0e0",
   },
-  heading: {
-    fontSize: 28,
-    fontWeight: "bold",
-    color: "#FFFFFF",
-  },
-  subtitle : {
-    fontSize: 14,
-    color: "#FFFFFF",
-    marginTop: 8,
-  },
-  bandGrid: {
-  flexDirection: "row",
-  flexWrap: "wrap",
-  justifyContent: "space-between",
-  paddingHorizontal: 10,
-  marginTop: 40,
-},
-bandBox: {
-  width: "47%",
-  height: 120,
-  backgroundColor: "#0F1B4D",
-  borderRadius: 24,
-  justifyContent: "center",
-  alignItems: "center",
-  marginBottom: 16,
-  borderColor: "#0077FF",
-  borderWidth: 1,
-},
-bandText: {
-  fontSize: 40,
-  fontWeight: "bold",
-  color: "#FFFFFF",
-},
-bandBoxSelected : {
-  backgroundColor : "#9AA2FF",
-  borderColor : "#9AA2FF",
-},
-bandTextSelected : {
-  color : "#FFFFFF",
-},
-nextButton: {
-    backgroundColor: "#9AA2FF",
-    height: 52,
-    borderRadius: 999,
+  optionsContainer: {
+    flex: 1,
+    gap: 16,
     justifyContent: "center",
-    alignItems: "center",
-    marginHorizontal: 24,
-    marginTop: "auto",
     marginBottom: 40,
+  },
+  nextButton: {
+    backgroundColor: "#95A4FC",
+    borderRadius: 30,
+    width: "100%",
+    alignItems: "center",
+    justifyContent: "center",
   },
   nextButtonText: {
-    color: "#FFFFFF",
-    fontSize: 16,
+    fontSize: 18,
     fontWeight: "600",
-  },
-    backButton: {
-    position: "absolute",
-    left: 16,
-    width: 44,
-    height: 44,
-    justifyContent: "center",
-    alignItems: "center",
-    zIndex: 10,
+    color: "#ffffff",
   },
 });

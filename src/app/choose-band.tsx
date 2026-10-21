@@ -1,4 +1,4 @@
-import { onboardingstyles } from "@/styles/onboarding";
+import { onboardingstyles } from "@/styles/onboarding-band";
 import { Ionicons } from "@expo/vector-icons";
 import { router } from "expo-router";
 import { useEffect, useState } from "react";
@@ -28,7 +28,7 @@ const ChooseBandScreen = () => {
 
   const handleNext = () => {
     if (!selectedBand) return;
-    router.push("/");
+    router.push("/daily-goal");
   };
   const handleBack = () => {
     if (router.canGoBack()) {
