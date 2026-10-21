@@ -1,4 +1,4 @@
-import { Link } from "expo-router";
+import { Link, router } from "expo-router";
 import { useState } from "react";
 import {
   Image,
@@ -64,6 +64,13 @@ const ChooseStarterScreen = () => {
           bounces={false}
           showsVerticalScrollIndicator={false}
         >
+          <TouchableOpacity style={styles.backButton} onPress={() => router.back()}>
+            <View style={styles.arrowContainer}>
+              <View style={styles.arrowShaft} />
+              <View style={styles.arrowChevron} />
+            </View>
+          </TouchableOpacity>
+
           <View style={onboardingStyles.headerContainer}>
             <Text style={[onboardingStyles.screenTitle, styles.title]}>
               Choose your{"\n"}Starter
@@ -100,10 +107,9 @@ const ChooseStarterScreen = () => {
           </View>
 
           <View style={styles.footerContainer}>
-            <Link href="/" asChild>
+            <Link href="/rest-day" asChild>
               <TouchableOpacity
                 disabled={selectedStarter === null}
-                // Inline style: tombol Next pudar sampai ada starter yang dipilih
                 style={StyleSheet.flatten([
                   onboardingStyles.nextButton,
                   styles.nextButton,
@@ -120,10 +126,45 @@ const ChooseStarterScreen = () => {
   );
 };
 
-// Style khusus layar ini (yang dipakai bersama sudah dipindah ke styles/onboarding.ts)
 const styles = StyleSheet.create({
   container: {
     paddingHorizontal: 24,
+    paddingTop: 20,
+  },
+  backButton: {
+    width: 48,
+    height: 48,
+    borderRadius: 24,
+    backgroundColor: "rgba(255, 255, 255, 0.15)",
+    justifyContent: "center",
+    alignItems: "center",
+    marginBottom: 20,
+    borderWidth: 1.5,
+    borderColor: "rgba(255, 255, 255, 0.25)",
+  },
+  arrowContainer: {
+    width: 24,
+    height: 18,
+    justifyContent: "center",
+    alignItems: "center",
+  },
+  arrowShaft: {
+    position: "absolute",
+    width: 20,
+    height: 3.5,
+    backgroundColor: "#ffffff",
+    borderRadius: 3,
+    right: 0,
+  },
+  arrowChevron: {
+    position: "absolute",
+    left: 0,
+    width: 12,
+    height: 12,
+    borderLeftWidth: 3.5,
+    borderBottomWidth: 3.5,
+    borderColor: "#ffffff",
+    transform: [{ rotate: "45deg" }],
   },
   title: {
     fontSize: 36,
@@ -133,7 +174,9 @@ const styles = StyleSheet.create({
     fontSize: 14,
   },
   card: {
-    backgroundColor: "#95A4FC", // Light blue/purple color
+    backgroundColor: "transparent",
+    borderWidth: 2,
+    borderColor: "rgba(149, 164, 252, 0.5)",
     borderRadius: 24,
     flexDirection: "row",
     alignItems: "center",
@@ -141,16 +184,20 @@ const styles = StyleSheet.create({
     paddingHorizontal: 16,
     width: "100%",
     height: 110,
-    shadowColor: "#000",
-    shadowOffset: { width: 0, height: 2 },
-    shadowOpacity: 0.1,
-    shadowRadius: 4,
-    elevation: 3,
+    shadowColor: "transparent",
+    shadowOffset: { width: 0, height: 0 },
+    shadowOpacity: 0,
+    shadowRadius: 0,
+    elevation: 0,
   },
   cardSelected: {
-    borderWidth: 2,
-    borderColor: "#ffffff",
-    backgroundColor: "#A9B5FF", // Slightly brighter when selected
+    backgroundColor: "#95A4FC",
+    borderColor: "#C4CDFF",
+    shadowColor: "#8B9FFF",
+    shadowOffset: { width: 0, height: 0 },
+    shadowOpacity: 1,
+    shadowRadius: 18,
+    elevation: 12,
   },
   imageContainer: {
     width: 80,

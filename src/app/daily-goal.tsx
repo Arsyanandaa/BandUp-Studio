@@ -1,4 +1,4 @@
-import { Link } from "expo-router";
+import { Link, router } from "expo-router";
 import { useState } from "react";
 import {
   ImageBackground,
@@ -31,7 +31,7 @@ const buildGoalOptions = (minutesList: number[]): GoalOption[] => {
   return result;
 };
 
-const GOAL_OPTIONS = buildGoalOptions([5, 10, 20, 30, 60]);
+const GOAL_OPTIONS = buildGoalOptions([5, 10, 20, 30]);
 
 const DailyGoalScreen = () => {
   const [selectedGoal, setSelectedGoal] = useState<string | null>(null);
@@ -48,6 +48,13 @@ const DailyGoalScreen = () => {
           bounces={false}
           showsVerticalScrollIndicator={false}
         >
+          <TouchableOpacity style={styles.backButton} onPress={() => router.back()}>
+            <View style={styles.arrowContainer}>
+              <View style={styles.arrowShaft} />
+              <View style={styles.arrowChevron} />
+            </View>
+          </TouchableOpacity>
+
           <View style={onboardingStyles.headerContainer}>
             <Text style={[onboardingStyles.screenTitle, styles.title]}>
               Daily Study Goal
@@ -77,7 +84,6 @@ const DailyGoalScreen = () => {
             <Link href="/choose-starter" asChild>
               <TouchableOpacity
                 disabled={selectedGoal === null}
-                // Inline style: tombol Next pudar sampai ada durasi yang dipilih
                 style={StyleSheet.flatten([
                   onboardingStyles.nextButton,
                   styles.nextButton,
@@ -94,10 +100,45 @@ const DailyGoalScreen = () => {
   );
 };
 
-// Style khusus layar ini (yang dipakai bersama sudah dipindah ke styles/onboarding.ts)
 const styles = StyleSheet.create({
   container: {
     paddingHorizontal: 30,
+    paddingTop: 20,
+  },
+  backButton: {
+    width: 48,
+    height: 48,
+    borderRadius: 24,
+    backgroundColor: "rgba(255, 255, 255, 0.15)",
+    justifyContent: "center",
+    alignItems: "center",
+    marginBottom: 20,
+    borderWidth: 1.5,
+    borderColor: "rgba(255, 255, 255, 0.25)",
+  },
+  arrowContainer: {
+    width: 24,
+    height: 18,
+    justifyContent: "center",
+    alignItems: "center",
+  },
+  arrowShaft: {
+    position: "absolute",
+    width: 20,
+    height: 3.5,
+    backgroundColor: "#ffffff",
+    borderRadius: 3,
+    right: 0,
+  },
+  arrowChevron: {
+    position: "absolute",
+    left: 0,
+    width: 12,
+    height: 12,
+    borderLeftWidth: 3.5,
+    borderBottomWidth: 3.5,
+    borderColor: "#ffffff",
+    transform: [{ rotate: "45deg" }],
   },
   title: {
     fontSize: 34,
@@ -106,23 +147,28 @@ const styles = StyleSheet.create({
     fontSize: 16,
   },
   optionButton: {
-    backgroundColor: "#95A4FC", // Light blue/purple color
+    backgroundColor: "transparent",
     paddingVertical: 18,
     borderRadius: 30,
     alignItems: "center",
     justifyContent: "center",
     width: "100%",
     borderWidth: 2,
-    borderColor: "transparent",
-    shadowColor: "#000",
-    shadowOffset: { width: 0, height: 2 },
-    shadowOpacity: 0.1,
-    shadowRadius: 4,
-    elevation: 3,
+    borderColor: "rgba(149, 164, 252, 0.5)",
+    shadowColor: "transparent",
+    shadowOffset: { width: 0, height: 0 },
+    shadowOpacity: 0,
+    shadowRadius: 0,
+    elevation: 0,
   },
   optionSelected: {
-    borderColor: "#ffffff",
-    backgroundColor: "#A9B5FF", // Slightly brighter when selected
+    backgroundColor: "#95A4FC",
+    borderColor: "#C4CDFF",
+    shadowColor: "#8B9FFF",
+    shadowOffset: { width: 0, height: 0 },
+    shadowOpacity: 1,
+    shadowRadius: 18,
+    elevation: 12,
   },
   optionText: {
     fontSize: 24,
