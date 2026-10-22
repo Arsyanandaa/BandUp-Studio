@@ -188,8 +188,8 @@ const styles = StyleSheet.create({
   card: {
     backgroundColor: "transparent",
     borderWidth: 2,
-    borderColor: "rgba(149, 164, 252, 0.5)",
-    borderRadius: 24,
+    borderColor: "rgba(149, 164, 252, 0.6)",
+    borderRadius: 34,
     flexDirection: "row",
     alignItems: "center",
     paddingVertical: 16,

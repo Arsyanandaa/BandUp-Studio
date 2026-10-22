@@ -66,7 +66,7 @@ bandBox: {
   justifyContent: "center",
   alignItems: "center",
   marginBottom: 30,
-  borderColor: "#0077FF",
+  borderColor: "rgba(149, 164, 252, 0.6)",
   borderWidth: 1,
 },
 bandText: {
