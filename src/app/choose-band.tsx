@@ -45,8 +45,8 @@ const ChooseBandScreen = () => {
   return (
     <ImageBackground source={require("../../assets/images/bg-night.jpg")} resizeMode="cover" style={onboardingstyles.Background}>
       <View style={onboardingstyles.header}>
-        <Text style={onboardingstyles.heading}>Choose your Target Band</Text>
-        <Text style={onboardingstyles.subtitle}>Set your goal, you can change it later.</Text>
+        <Text style={onboardingstyles.heading}>Pilih target Band mu</Text>
+        <Text style={onboardingstyles.subtitle}>Tentukan tujuanmu, kita bisa merubahnya nanti.</Text>
       </View>
 
       <View style={onboardingstyles.bandGrid}>
