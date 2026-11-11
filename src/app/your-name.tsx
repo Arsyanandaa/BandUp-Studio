@@ -34,9 +34,9 @@ const YourNameScreen = () => {
     // Simpan nama ke context secara sinkron untuk page selanjutnya
     setName(trimmedName);
 
-    // Navigasi ke page berikutnya (juga menyertakan route params sebagai opsi sinkron ganda)
+    // Navigasi ke page ready (juga menyertakan route params sebagai opsi sinkron ganda)
     router.push({
-      pathname: "/" as any,
+      pathname: "/ready" as any,
       params: { name: trimmedName },
     });
   };
