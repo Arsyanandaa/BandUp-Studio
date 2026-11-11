@@ -10,6 +10,7 @@ import {
   View,
 } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
+import { useUser } from "../context/user-context";
 import { onboardingStyles } from "../styles/onboarding";
 
 // Daftar hari istirahat
@@ -32,7 +33,13 @@ const DAYS: DayOption[] = [
 const MAX_REST_DAYS = 2;
 
 const RestDayScreen = () => {
+  const { setRestDays } = useUser();
   const [selectedDays, setSelectedDays] = useState<string[]>([]);
+
+  const handleNext = () => {
+    setRestDays?.(selectedDays);
+    router.push("/your-name" as any);
+  };
 
   const toggleDay = (dayId: string) => {
     setSelectedDays((prev) => {
@@ -143,7 +150,7 @@ const RestDayScreen = () => {
                 styles.nextButton,
                 { opacity: 1 },
               ]}
-              onPress={() => router.push("/")}
+              onPress={handleNext}
             >
               <Text style={onboardingStyles.nextButtonText}>Selanjutnya</Text>
             </TouchableOpacity>
