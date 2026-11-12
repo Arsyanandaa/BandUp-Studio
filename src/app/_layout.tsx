@@ -1,3 +1,9 @@
+import {
+  Poppins_400Regular,
+  Poppins_600SemiBold,
+  Poppins_700Bold,
+  useFonts,
+} from "@expo-google-fonts/poppins";
 import { DarkTheme, DefaultTheme, Stack, ThemeProvider } from "expo-router";
 import * as SplashScreen from "expo-splash-screen";
 import { useColorScheme } from "react-native";
@@ -9,6 +15,14 @@ SplashScreen.preventAutoHideAsync();
 
 export default function RootLayout() {
   const colorScheme = useColorScheme();
+  const [fontsLoaded] = useFonts({
+    Poppins_400Regular,
+    Poppins_600SemiBold,
+    Poppins_700Bold,
+  });
+
+  if (!fontsLoaded) return null;
+
   return (
     <UserProvider>
       <ThemeProvider value={colorScheme === "dark" ? DarkTheme : DefaultTheme}>
@@ -37,6 +51,16 @@ export default function RootLayout() {
           />
           <Stack.Screen
             name="ready"
+            options={{ animation: "slide_from_right" }}
+          />
+          <Stack.Screen name="(tabs)" />
+          <Stack.Screen name="streak" options={{ animation: "fade" }} />
+          <Stack.Screen
+            name="reading"
+            options={{ animation: "slide_from_right" }}
+          />
+          <Stack.Screen
+            name="listening"
             options={{ animation: "slide_from_right" }}
           />
         </Stack>

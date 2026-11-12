@@ -61,8 +61,8 @@ const ReadyScreen = () => {
   });
 
   const handleFinish = () => {
-    // Kembali ke halaman index
-    router.replace("/");
+    // Lanjut ke tabs (home)
+    router.replace("/(tabs)/home" as any);
   };
 
   return (
