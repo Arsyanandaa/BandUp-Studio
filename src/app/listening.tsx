@@ -1,10 +1,10 @@
+import { FadeInUp } from "@/components/home/animations";
+import { Item, fetchItems, fetchItemsPromise } from "@/services/listeningApi";
+import { colors } from "@/styles/home";
 import { Ionicons } from "@expo/vector-icons";
 import { router } from "expo-router";
 import { useCallback, useEffect, useState } from "react";
 import { ActivityIndicator, FlatList, Pressable, StyleSheet, Text, View } from "react-native";
-import { FadeInUp } from "@/components/home/animations";
-import { Item, fetchItems } from "@/services/listeningApi";
-import { colors } from "@/styles/home";
 
 export default function Listening() {
   const [items, setItems] = useState<Item[]>([]);
@@ -27,12 +27,26 @@ export default function Listening() {
     load();
   }, [load]);
 
+  const reload = () => {
+    setLoading(true);
+    setError("");
+    fetchItemsPromise()
+      .then(setItems)
+      .catch((e: Error) => setError(e.message))
+      .finally(() => setLoading(false));
+  };
+
   return (
     <View style={styles.container}>
       <Pressable onPress={() => router.back()} hitSlop={12} style={styles.back}>
         <Ionicons name="arrow-back" size={26} color={colors.white} />
       </Pressable>
       <Text style={styles.heading}>Listening</Text>
+      {!loading && !error && (
+        <Pressable onPress={reload} style={styles.refresh}>
+          <Text style={styles.buttonText}>Muat ulang</Text>
+        </Pressable>
+      )}
 
       {loading && <ActivityIndicator size="large" color={colors.primary} style={styles.center} />}
 
@@ -53,7 +67,7 @@ export default function Listening() {
           showsVerticalScrollIndicator={false}
           renderItem={({ item, index }) => (
             <FadeInUp delay={Math.min(index, 8) * 80} style={styles.card}>
-              <Text style={styles.subtitle}>{item.subtitle}</Text>
+              {!!item.subtitle && <Text style={styles.subtitle}>{item.subtitle}</Text>}
               <Text style={styles.title}>{item.title}</Text>
               <Text style={styles.body}>{item.body}</Text>
             </FadeInUp>
@@ -77,4 +91,5 @@ const styles = StyleSheet.create({
   error: { fontFamily: "Poppins_400Regular", color: "#FF6B6B" },
   button: { backgroundColor: colors.primary, borderRadius: 999, paddingVertical: 12, paddingHorizontal: 28, marginTop: 20 },
   buttonText: { fontFamily: "Poppins_600SemiBold", color: colors.white },
+    refresh: { alignSelf: "flex-start", backgroundColor: colors.primary, borderRadius: 999, paddingVertical: 8, paddingHorizontal: 20, marginBottom: 16 },
 });

@@ -5,6 +5,7 @@ const HEADERS = {
   "User-Agent": "BandUpStudio/1.0 (student project; contact: arsya@example.com)",
 };
 
+//mentah
 interface WikiResponse {
   title: string;
   description?: string;
@@ -19,6 +20,7 @@ export interface Article {
   image?: string;
 }
 
+//masukin
 const toArticle = (data: WikiResponse): Article => ({
   title: data.title,
   description: data.description ?? "",
@@ -26,7 +28,7 @@ const toArticle = (data: WikiResponse): Article => ({
   image: data.thumbnail?.source,
 });
 
-// Async function buatan sendiri, memakai fetch bawaan
+// Async function 
 export async function fetchArticle(): Promise<Article> {
 const res = await fetch(URL, { headers: HEADERS });
   if (!res.ok) throw new Error(`Request gagal (${res.status})`);
