@@ -143,7 +143,7 @@ const RestDayScreen = () => {
                 styles.nextButton,
                 { opacity: 1 },
               ]}
-              onPress={() => router.push("/")}
+              onPress={() => router.replace("/(tabs)/home")}
             >
               <Text style={onboardingStyles.nextButtonText}>Selanjutnya</Text>
             </TouchableOpacity>
