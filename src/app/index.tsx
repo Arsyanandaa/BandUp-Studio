@@ -5,7 +5,7 @@ import { router } from "expo-router";
 
 const WelcomeScreen = () => {
   const handelGetStarted = () => {
-    router.push("/choose-band");
+    router.push("/login");
   };
   return (
     <ImageBackground
